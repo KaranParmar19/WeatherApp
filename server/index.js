@@ -16,7 +16,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
-const PORT = process.env.https://weatherapp-frontend-dg8z.onrender.com/ || 5000;
+const PORT = process.env.PORT || 5000;
 
 // Create HTTP server to allow Socket.IO to attach
 const server = http.createServer(app);
