@@ -1,0 +1,278 @@
+﻿# Software Requirements Specification (SRS)
+**Project Name**: Weather Project
+**Version**: 1.1
+**Date**: 2024-12-21
+
+
+## Table of Contents
+*   [1. INTRODUCTION](#1-introduction)
+    *   [1.1 PURPOSE](#11-purpose)
+    *   [1.2 SCOPE](#12-scope)
+    *   [1.3 DEFINITIONS, ACRONYMS, AND ABBREVIATIONS](#13-definitions-acronyms-and-abbreviations)
+    *   [1.4 REFERENCES](#14-references)
+    *   [1.5 OVERVIEW](#15-overview)
+*   [2. GENERAL DESCRIPTION](#2-general-description)
+    *   [2.1 PRODUCT PERSPECTIVE](#21-product-perspective)
+    *   [2.2 PRODUCT FUNCTIONS](#22-product-functions)
+    *   [2.3 USER CHARACTERISTICS](#23-user-characteristics)
+    *   [2.4 GENERAL CONSTRAINTS](#24-general-constraints)
+    *   [2.5 ASSUMPTIONS AND DEPENDENCIES](#25-assumptions-and-dependencies)
+*   [3. SPECIFIC REQUIREMENTS](#3-specific-requirements)
+    *   [3.1 EXTERNAL INTERFACE REQUIREMENTS](#31-external-interface-requirements)
+    *   [3.2 FUNCTIONAL REQUIREMENTS](#32-functional-requirements)
+    *   [3.5 NON-FUNCTIONAL REQUIREMENTS](#35-non-functional-requirements)
+    *   [3.7 DESIGN CONSTRAINTS](#37-design-constraints)
+    *   [3.9 OTHER REQUIREMENTS](#39-other-requirements)
+*   [4. ANALYSIS MODELS](#4-analysis-models)
+    *   [4.1 DATA FLOW DIAGRAMS (DFD)](#41-data-flow-diagrams-dfd)
+
+---
+
+## 1. INTRODUCTION
+
+### 1.1 PURPOSE
+The purpose of this Software Requirements Specification (SRS) document is to provide a comprehensive and detailed description of the "Weather Project". It defines the functional and non-functional requirements, system interfaces, and design constraints. This document is intended for:
+*   **Project Stakeholders**: To verify that the proposed system meets their needs.
+*   **Development Team**: To use as a blueprint for designing and implementing the system.
+*   **Quality Assurance Team**: To derive test cases and validate the system functionalities.
+
+### 1.2 SCOPE
+1.  **Product Name**: Weather Project (A MERN Stack Application).
+2.  **Product Capabilities**:
+    *   The system constitutes a web-based platform that aggregates meteorological data.
+    *   It provides real-time weather updates, predictive 7-day forecasts, and historical trend analysis.
+    *   It integrates an Artificial Intelligence (AI) powered chatbot to resolve natural language weather queries.
+3.  **Application**:
+    *   To assist individuals in planning daily activities (commuting, events, travel) by providing accurate weather insights.
+    *   To visualize complex weather data (humidity, UV index, wind speed) in an accessible, graphical format.
+    *   To demonstrate the capabilities of full-stack web development using modern technologies.
+
+### 1.3 DEFINITIONS, ACRONYMS, AND ABBREVIATIONS
+*   **SRS**: Software Requirements Specification.
+*   **MERN**: MongoDB, Express.js, React.js, Node.js (The development stack).
+*   **API**: Application Programming Interface (Mechanism for systems to communicate).
+*   **GUI**: Graphical User Interface.
+*   **HTTP/HTTPS**: Hypertext Transfer Protocol / Secure.
+*   **JSON**: JavaScript Object Notation (Data interchange format).
+*   **JWT**: JSON Web Token (Used for secure authentication).
+*   **Socket.io**: Library for real-time, bi-directional event-based communication.
+
+### 1.4 REFERENCES
+1.  *Open-Meteo API Documentation*: https://open-meteo.com/en/docs
+2.  *React.js Official Documentation*: https://react.dev/
+3.  *Node.js Official Documentation*: https://nodejs.org/en/docs/
+4.  *IEEE Std 830-1998*: IEEE Recommended Practice for Software Requirements Specifications.
+
+### 1.5 OVERVIEW
+This SRS is structured to guide the reader from high-level concepts to specific details.
+*   **Section 2** describes the general factors that affect the product and its requirements.
+*   **Section 3** contains the specific, detailed, and verifiable requirements (Functional and Non-Functional).
+*   **Section 4** provides analysis models including Data Flow Diagrams (DFD) to visualize system processes.
+*   **Appendices** contain supplementary information.
+
+---
+
+## 2. GENERAL DESCRIPTION
+
+### 2.1 PRODUCT PERSPECTIVE
+The "Weather Project" is a new, self-contained product. It is a web application that follows the **Client-Server Architecture**.
+*   **Frontend Interface**: Developed using React.js, running in the client's web browser. It is responsible for presentation and user interaction.
+*   **Backend Server**: Developed using Node.js and Express.js. It acts as the middleware, handling business logic, authentication, and external API requests.
+*   **Database**: MongoDB is used for persistent storage of user profiles and application state.
+*   **Communication**: The system relies on RESTful API calls for standard data and WebSockets for real-time features.
+
+### 2.2 PRODUCT FUNCTIONS
+The major functions of the system include:
+1.  **Secure Authentication**: Allowing users to register, login, and manage their sessions securely.
+2.  **Location-Based Services**: Automatically detecting or manually searching for cities to retrieve weather data.
+3.  **Weather Monitoring**: Displaying current temperature, humidity, wind speed, pressure, and UV index.
+4.  **Forecasting**: Providing a detailed look-ahead for the next 7 days.
+5.  **Analytics Dashboard**: Visualizing historical and forecast data trends using interactive charts.
+6.  **AI Assistant**: A real-time chat interface capable of understanding and answering weather-related questions.
+
+### 2.3 USER CHARACTERISTICS
+*   **Casual User**: Use frequency is high (daily). primary goal is to quickly check if it will rain or be sunny. Technical expertise is low.
+*   **Power User/Analyst**: May be interested in specific metrics like pressure trends or humidity over time. Technical expertise is moderate.
+*   **Administrator (Dev)**: Manages the system backend and API keys.
+
+### 2.4 GENERAL CONSTRAINTS
+*   **Connectivity**: The system requires an active internet connection to fetch data from Open-Meteo.
+*   **Browser Support**: Must support modern browsers (Chrome, Firefox, Safari, Edge) with JavaScript enabled.
+*   **Hardware**: The client device must have sufficient RAM (min 4GB recommended) to render React animations smoothly.
+*   **Regulatory**: Must comply with data privacy laws regarding user passwords and location data.
+
+### 2.5 ASSUMPTIONS AND DEPENDENCIES
+*   **Assumption**: The Open-Meteo API will maintain its current free-tier availability and response format.
+*   **Assumption**: The user has enabled location services if they wish to use the "My Location" feature.
+*   **Dependency**: The system depends on the `npm` ecosystem for library management.
+
+---
+
+## 3. SPECIFIC REQUIREMENTS
+
+### 3.1 EXTERNAL INTERFACE REQUIREMENTS
+
+#### 3.1.1 User Interfaces
+The system shall provide a standard HTML/CSS/JS interface.
+*   **Landing Page**: A clean, glassmorphic dashboard showing the most relevant current data.
+*   **Search Bar**: A prominent input field at the top for city entry.
+*   **Navigation Bar**: Persistent links to 'Home', 'Analytics', 'Assistant', and 'Profile'.
+*   **Alerts**: Toast notifications for errors (e.g., "City not found") or successes.
+
+#### 3.1.2 Hardware Interfaces
+*   **Server Side**: No specific proprietary hardware; runs on standard virtual private servers (VPS) or local machines.
+*   **Client Side**: Compatible with PC, Mac, Tablet, and Smartphone screens (Responsive Design).
+
+#### 3.1.3 Software Interfaces
+*   **Operating System**: Cross-platform compatibility for both server (Linux/Windows) and client (Any OS with a browser).
+*   **Database Interface**: Mongoose ODM (Object Data Modeling) library to communicate with MongoDB.
+
+#### 3.1.4 Communications Interfaces
+*   **REST API**: JSON over HTTP/HTTPS for standard requests.
+*   **WebSockets**: Socket.io protocol for low-latency, real-time chat communication.
+
+### 3.2 FUNCTIONAL REQUIREMENTS
+
+#### 3.2.1 User Registration
+*   **3.2.1.1 Introduction**: New users must create an account to save preferences.
+*   **3.2.1.2 Inputs**: Full Name, Email Address, Password, Default City.
+*   **3.2.1.3 Processing**:
+    1.  System validates email format and password strength.
+    2.  Check if email already exists in the `users` collection.
+    3.  Hash password using a salt algorithm (bcrypt).
+    4.  Create new document in Database.
+*   **3.2.1.4 Outputs**: "Registration Successful" message; User is redirected to Login.
+*   **3.2.1.5 Error Handling**: Display specific error messages for "Email already in use" or "Password too weak".
+
+#### 3.2.2 User Login
+*   **3.2.2.1 Introduction**: Existing users verify identity to access features.
+*   **3.2.2.2 Inputs**: Email, Password.
+*   **3.2.2.3 Processing**:
+    1.  Look up user by email.
+    2.  Compare input password hash with stored hash.
+    3.  Generate Session ID or JWT.
+*   **3.2.2.4 Outputs**: User authenticated; Session established; Redirect to Dashboard.
+*   **3.2.2.5 Error Handling**: Return generic "Invalid Credentials" to prevent enumeration attacks.
+
+#### 3.2.3 Weather Data Retrieval
+*   **3.2.3.1 Introduction**: The core function to fetch weather for a specific location.
+*   **3.2.3.2 Inputs**: City Name string.
+*   **3.2.3.3 Processing**:
+    1.  **Geocoding**: Backend calls Open-Meteo Geocoding API to resolve City -> [Lat, Lon].
+    2.  **Fetch**: Backend calls Open-Meteo Weather API with [Lat, Lon] for `current`, `hourly`, and `daily` parameters.
+    3.  **Aggregation**: Backend merges responses into a single JSON structure.
+*   **3.2.3.4 Outputs**: Detailed JSON object containing Temperature, Weather Code, Wind Speed, etc.
+*   **3.2.3.5 Error Handling**: Handle API timeouts or 404s from the external provider.
+
+#### 3.2.4 Analytics Visualization
+*   **3.2.4.1 Introduction**: Visualize trends to help users spot patterns.
+*   **3.2.4.2 Inputs**: Weather Data Array (from 3.2.3).
+*   **3.2.4.3 Processing**:
+    1.  Frontend React component parses the hourly data array.
+    2.  Map data points to X (Time) and Y (Value) axes.
+    3.  Render Line/Bar Chart using Recharts library.
+*   **3.2.4.4 Outputs**: Interactive graph displayed on the Analytics page.
+*   **3.2.4.5 Error Handling**: Display "No Data Available" if the array is empty.
+
+#### 3.2.5 AI Assistant Interaction
+*   **3.2.5.1 Introduction**: Users ask natural language questions.
+*   **3.2.5.2 Inputs**: String (e.g., "Do I need an umbrella?").
+*   **3.2.5.3 Processing**:
+    1.  Client emits `send_message` event via Socket.
+    2.  Server receives text and analyzes context (keyword matching or basic NLP).
+    3.  Server generates appropriate response (e.g., checks rain probability > 50%).
+    4.  Server emits `receive_message`.
+*   **3.2.5.4 Outputs**: Chat bubble appears in the user's interface.
+*   **3.2.5.5 Error Handling**: Visual indicator if "Disconnected from Server".
+
+### 3.5 NON-FUNCTIONAL REQUIREMENTS
+
+#### 3.5.1 Performance
+*   **Latency**: API response time for weather data shall not exceed 2000ms (2 seconds) under normal network conditions.
+*   **Optimizations**: Assets (images, scripts) should be minified to ensure the initial load time is under 3 seconds.
+
+#### 3.5.2 Reliability
+*   The system shall recover from database connection failures by attempting re-connection automatically.
+*   Input validation shall prevent the system from crashing due to malformed data.
+
+#### 3.5.3 Availability
+*   The system shall be available 99.9% of the time during business hours.
+*   Scheduled maintenance shall be announced in advance.
+
+#### 3.5.4 Security
+*   **Encryption**: All passwords MUST be hashed using bcrypt before storage.
+*   **Transmission**: Data in transit should be protected via HTTPS (SSL/TLS).
+*   **Sanitization**: All user inputs must be sanitized to prevent NoSQL Injection and XSS attacks.
+
+#### 3.5.5 Maintainability
+*   **Code Structure**: The codebase shall follow the MVC (Model-View-Controller) pattern.
+*   **Comments**: Critical functions shall be documented with JSDoc style comments.
+
+#### 3.5.6 Portability
+*   The Web App shall be fully responsive, functioning correctly on Desktop (1920x1080), Tablet (768x1024), and Mobile (375x667) resolutions.
+
+### 3.7 DESIGN CONSTRAINTS
+*   **Stack Requirement**: Must strictly use MongoDB, Express, React, and Node.js.
+*   **Timeframe**: Development must be completed within the academic semester.
+*   **Cost**: Usage of zero-cost open-source libraries and free-tier APIs is mandatory.
+
+### 3.9 OTHER REQUIREMENTS
+*   **Logging**: The server shall maintain a consolidated log of all API access attempts (timestamp, IP, endpoint) for auditing purposes.
+
+---
+
+## 4. ANALYSIS MODELS
+
+### 4.1 DATA FLOW DIAGRAMS (DFD)
+
+**Level 0 DFD (Context Diagram)**
+*   **External Entities**: User, Open-Meteo API.
+*   **Process**: 0.0 Weather Project System.
+*   **Flows**:
+    *   User -> Inputs Credentials/City -> System.
+    *   System -> Requests Data -> Open-Meteo API.
+    *   Open-Meteo API -> Returns JSON -> System.
+    *   System -> Displays Dashboard/Charts -> User.
+
+**Level 1 DFD (Breakdown)**
+1.  **Process 1.0 (Auth)**: Handles Login/Register. Interacts with **User DB**.
+2.  **Process 2.0 (Weather Controller)**:
+    *   Accepts City Name.
+    *   Calls **Process 2.1 (Geocoding)** to get Coords.
+    *   Calls **Process 2.2 (Forecast)** to get Weather.
+    *   Returns formatted data.
+3.  **Process 3.0 (Assistant)**:
+    *   Listens for Socket Events.
+    *   Processes Logic.
+    *   Emits Responses.
+
+---
+
+## 5. GITHUB LINK
+(Insert your GitHub Repository Link Here)
+
+## 6. DEPLOYED LINK
+(Insert your Deployed Application URL Here, e.g., Vercel/Netlify)
+
+## 7. CLIENT APPROVAL PROOF
+(Insert Screenshot/Scan)
+
+## 8. CLIENT LOCATION PROOF
+(Insert Screenshot/Scan)
+
+## 9. TRANSACTION ID PROOF
+(Insert Transaction Details if applicable)
+
+## 10. EMAIL ACKNOWLEDGEMENT
+(Insert Email Screenshot)
+
+## 11. GST No
+(Insert GST Number if applicable)
+
+---
+
+## A. APPENDICES
+### A.1 Appendix 1: Technology Descriptions
+*   **React**: A JavaScript library for building user interfaces.
+*   **Express**: A minimal and flexible Node.js web application framework.
+

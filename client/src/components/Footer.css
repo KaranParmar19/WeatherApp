@@ -1,0 +1,14 @@
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--secondary-bg);
+    color: var(--text-secondary);
+    margin-top: auto;
+    font-family: 'Outfit', sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}

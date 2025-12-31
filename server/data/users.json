@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1765454867134,
+    "username": "ooo",
+    "email": "ayush22005kumar@gmail.com",
+    "password": "2024@Ayush",
+    "fullName": "Ayush Kumar",
+    "city": "Gaya"
+  },
+  {
+    "id": 1765454910178,
+    "username": "aaa",
+    "email": "aaa@gmail.com",
+    "password": "12313610",
+    "fullName": "dsdsd",
+    "city": "dhanbad"
+  },
+  {
+    "id": 1765455924786,
+    "username": "test",
+    "email": "test@example.com",
+    "password": "password123",
+    "fullName": "Test User",
+    "city": "New York"
+  },
+  {
+    "id": 1765458347204,
+    "username": "arun",
+    "email": "arun@gmail.com",
+    "password": "123456",
+    "fullName": "arun",
+    "city": "noida"
+  }
+]

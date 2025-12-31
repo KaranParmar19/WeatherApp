@@ -1,0 +1,285 @@
+/* Dashboard Main Grid - 3 Column Layout like reference */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr 300px;
+    /* Current Weather | Main Center | Sidebar */
+    gap: 20px;
+    padding: 24px;
+    max-width: 1600px;
+    margin: 85px auto 0;
+    /* Add top margin for fixed navbar */
+    height: calc(100vh - 90px);
+    /* Adjust height */
+    overflow: hidden;
+    /* Prevent scrolling if everything fits */
+}
+
+/* --- Left Column: Large Current Card & Highlights --- */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* Remove scrollbar for cleaner look */
+.left-column::-webkit-scrollbar {
+    width: 0;
+}
+
+.current-weather-large {
+    background: rgba(20, 20, 20, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 30px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    flex: 0 0 auto;
+    min-height: 380px;
+    /* Use fixed height for the orange card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.current-weather-large .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.current-weather-large .temp {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 10px 0;
+}
+
+.current-weather-large .condition {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.current-weather-large .bottom-locs {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+    flex-wrap: wrap;
+}
+
+.mini-loc-tag {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    backdrop-filter: blur(5px);
+}
+
+/* Highlights Grid (Bottom Left Block) */
+.highlights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: auto;
+}
+
+/* --- Center Column: Forecast & Graphs --- */
+.center-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.center-column::-webkit-scrollbar {
+    width: 0;
+}
+
+/* Daily Row */
+.daily-forecast-container {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    /* scrollbar space */
+}
+
+.daily-forecast-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+.daily-forecast-container::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 2px;
+}
+
+.daily-card {
+    background: rgba(30, 30, 30, 0.6);
+    border-radius: 16px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 90px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.daily-icon {
+    width: 40px;
+    margin-bottom: 8px;
+}
+
+.daily-temp {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.daily-day {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Graph Cards */
+.highlight-card {
+    background: rgba(20, 20, 20, 0.5);
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.highlight-header {
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- Right Sidebar --- */
+.right-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+}
+
+.sidebar-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.sun-times {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sun-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sun-value {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.sun-label {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* Rain List */
+.rain-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.rain-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.rain-day {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.rain-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rain-pill {
+    background: #ff7300;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    min-width: 50px;
+    text-align: center;
+}
+
+.rain-bar-bg {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.rain-bar-fill {
+    height: 100%;
+    background: #ff7300;
+    border-radius: 4px;
+    transition: width 0.5s ease-out;
+}
+
+/* Common Text Classes */
+.location {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+        height: auto;
+        overflow: visible;
+    }
+
+    .right-sidebar {
+        grid-column: span 2;
+        flex-direction: row;
+    }
+
+    .left-column,
+    .center-column {
+        height: auto;
+    }
+}
+
+@media (max-width: 900px) {
+    .dashboard-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .right-sidebar {
+        flex-direction: column;
+    }
+}
