@@ -9,7 +9,9 @@ const connectDB = async () => {
     } catch (error) {
         logger.log(`Error: ${error.message}`);
         console.error(`Error: ${error.message}`);
-        process.exit(1);
+        console.error(`Error: ${error.message}`);
+        console.error("Warning: MongoDB connection failed. Auth features will not work, but Weather features should still function.");
+        // process.exit(1); // Allow server to run without DB for now
     }
 };
 
