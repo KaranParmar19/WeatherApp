@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, User, Lock, Mail, MapPin } from 'lucide-react';
 import { useUser } from '../context/UserContext';
+import { API_BASE_URL } from '../config';
 import './AuthModal.css';
 
 const AuthModal = ({ isOpen, onClose }) => {
@@ -26,7 +27,7 @@ const AuthModal = ({ isOpen, onClose }) => {
         e.preventDefault();
         setError('');
 
-        const endpoint = isRegister ? '/api/auth/signup' : '/api/auth/login';
+        const endpoint = isRegister ? `${API_BASE_URL}/api/auth/signup` : `${API_BASE_URL}/api/auth/login`;
 
         try {
             const res = await fetch(endpoint, {

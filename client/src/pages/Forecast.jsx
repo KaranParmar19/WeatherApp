@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Pages.css';
 import { Search } from 'lucide-react';
 import { getOwmIconUrl, getWeatherDescription } from '../utils/weatherUtils';
+import { API_BASE_URL } from '../config';
 
 const Forecast = () => {
     const [forecast, setForecast] = useState([]);
@@ -11,7 +12,7 @@ const Forecast = () => {
     const fetchForecast = async (cityName) => {
         try {
             setLoading(true);
-            const res = await fetch(`/api/weather/full?city=${cityName}`);
+            const res = await fetch(`${API_BASE_URL}/api/weather/full?city=${cityName}`);
             if (!res.ok) throw new Error("Failed");
             const data = await res.json();
 

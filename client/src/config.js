@@ -1,0 +1,1 @@
+export const API_BASE_URL = "https://weatherapp-backend-5s62.onrender.com";

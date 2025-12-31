@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import { API_BASE_URL } from '../config';
 
 const UserContext = createContext();
 
@@ -12,7 +13,7 @@ export const UserProvider = ({ children }) => {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const res = await fetch('/api/auth/me');
+                const res = await fetch(`${API_BASE_URL}/api/auth/me`);
                 if (res.ok) {
                     const data = await res.json();
                     setUser(data.user);
@@ -32,7 +33,7 @@ export const UserProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await fetch('/api/auth/logout', { method: 'POST' });
+            await fetch(`${API_BASE_URL}/api/auth/logout`, { method: 'POST' });
             setUser(null);
         } catch (err) {
             console.error("Logout failed", err);

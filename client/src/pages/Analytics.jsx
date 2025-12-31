@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 import './Pages.css';
 import { Search } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const Analytics = () => {
     const [data, setData] = useState(null);
@@ -9,7 +10,7 @@ const Analytics = () => {
 
     const fetchData = async (c) => {
         try {
-            const res = await fetch(`/api/weather/full?city=${c}`);
+            const res = await fetch(`${API_BASE_URL}/api/weather/full?city=${c}`);
             if (!res.ok) return;
             const json = await res.json();
             setData(json);

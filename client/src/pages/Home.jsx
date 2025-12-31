@@ -8,6 +8,7 @@ import HourlyForecastGraph from '../components/HourlyForecastGraph'
 import DailyForecastRow from '../components/DailyForecastRow'
 import WindSpeedGraph from '../components/WindSpeedGraph'
 import RightSidebar from '../components/RightSidebar'
+import { API_BASE_URL } from '../config';
 
 function Home() {
     const [city, setCity] = useState('London')
@@ -37,7 +38,7 @@ function Home() {
             setLoading(true)
             setError(null)
 
-            let url = `/api/weather/full?`;
+            let url = `${API_BASE_URL}/api/weather/full?`;
             if (lat && lon) url += `lat=${lat}&lon=${lon}`;
             else url += `city=${query}`;
 
@@ -91,7 +92,7 @@ function Home() {
         // Lower threshold to 1 character for faster feedback
         if (value.length > 1) {
             try {
-                const res = await fetch(`/api/weather/search?query=${value}`);
+                const res = await fetch(`${API_BASE_URL}/api/weather/search?query=${value}`);
                 if (res.ok) {
                     const data = await res.json();
                     setSuggestions(data || []);

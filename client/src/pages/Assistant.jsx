@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Pages.css';
 import { Send, MapPin, Sparkles, User, Bot } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const Assistant = () => {
     const [inputValue, setInputValue] = useState('');
@@ -138,7 +139,7 @@ const Assistant = () => {
         }
 
         try {
-            const res = await fetch(`/api/weather/full?city=${parsed.city}`);
+            const res = await fetch(`${API_BASE_URL}/api/weather/full?city=${parsed.city}`);
             if (!res.ok) throw new Error("City not found");
             const data = await res.json();
 
